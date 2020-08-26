@@ -6,6 +6,8 @@ HEADPHONES="analog-output;output-headphones-1"
 pactl list sinks | grep "Active Port: $SPEAKERS" > /dev/null
 if [[ $? -eq 0 ]]; then
     pactl set-sink-port "alsa_output.pci-0000_05_04.0.analog-stereo" "$HEADPHONES"
+    echo "$HEADPHONES"
 else
     pactl set-sink-port "alsa_output.pci-0000_05_04.0.analog-stereo" "$SPEAKERS"
+    echo "$SPEAKERS"
 fi
